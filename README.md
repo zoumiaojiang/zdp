@@ -1,4 +1,4 @@
-zdp
-===
+ZDP
+------------
 
-zdp is baidu Zhixin Development Platform
+ZDP是baidu知心卡片的开发平台

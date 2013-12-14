@@ -1,0 +1,31 @@
+{
+
+    "name": "zdp",
+
+    "description": "Zhixin Develop Platform",
+
+    "version": "0.0.1",
+
+    "contributors": [
+        { "name": "Johnson", "email": "zoumiaojiang@gmail.com" }
+    ],
+
+    "repository": "git://github.com/zoumiaojiang/zdp",
+
+    "bin": { "zdp": "./bin/zdp-cli" },
+
+    "preferGlobal": "true",
+
+    "engines": { "node": "*" },
+
+    "dependencies": {
+        "express": "3.4.0",
+        "uglifycss": "~0.0.5",
+        "jshint": "~2.1",
+        "uglify-js": "~2.3.0",
+        "less": "~1.4.2",
+        "fsmonitor": "~0.2.2",
+        "msee": "~0.1.0"
+    }
+
+}
