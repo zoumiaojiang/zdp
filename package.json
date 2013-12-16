@@ -4,19 +4,16 @@
 
     "description": "Zhixin Develop Platform",
 
-    "version": "0.0.1",
+    "version": "0.0.4",
 
     "contributors": [
         { "name": "Johnson", "email": "zoumiaojiang@gmail.com" }
     ],
 
     "repository": "git://github.com/zoumiaojiang/zdp",
-
-    "bin": { "zdp": "./bin/zdp-cli" },
-
-    "preferGlobal": "true",
-
-    "engines": { "node": "*" },
+    "bin": {
+        "zdp": "./bin/zdp-cli"
+    },
 
     "dependencies": {
         "express": "3.4.0",
