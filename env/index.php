@@ -3,12 +3,12 @@
     ini_set('display_errors' , "off") ;
     $smarty = new Smarty;
     $module = $argv[1];
-    $tpl_root = $argv[2];
+    $node_root = $argv[2];
 
     $data = file_get_contents($module.'/data.json');
     $res = json_decode($data, true);
-    $smarty -> template_dir = $tpl_root.'/templates'; //模板存放目录 
-    $smarty -> compile_dir = $tpl_root.'/templates_c'; //编译目录 
+    $smarty -> template_dir = $node_root.'/templates'; //模板存放目录 
+    $smarty -> compile_dir = $node_root.'/templates_c'; //编译目录 
     $smarty -> caching = false;
     $smarty -> debugging = false;
     $smarty -> left_delimiter = "{%"; //左定界符 
@@ -20,8 +20,10 @@
 
     $pagePath = $module.'/page.tpl';
     $pageTpl = file_get_contents($pagePath);
-    $pageTpl = preg_replace('/\{%extends.*%\}/', '', $pageTpl);
-    file_put_contents ($module.'/page.tpl', $pageTpl);
+    $pageTplTmp = file_get_contents($pagePath);
+    $pageTplTmp = preg_replace('/\{%extends.*%\}/', '', $pageTplTmp);
+    file_put_contents ($module.'/page.tpl', $pageTplTmp);
     $smarty -> display($module.'/page.tpl');
+    file_put_contents ($module.'/page.tpl', $pageTpl);
 
 ?>
