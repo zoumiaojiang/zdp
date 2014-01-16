@@ -14,16 +14,20 @@
     $smarty -> left_delimiter = "{%"; //左定界符 
     $smarty -> right_delimiter = "%}"; //右定界符 
 
-    $smarty -> assign('tplData', $res['item']['display']['tplData']);
-    $smarty -> assign('extData', $res['item']['display']['extData']);
+    $tplData = $res['item']['display']['tplData'];
+
+    $extDataJson = file_get_contents($node_root.'/extData.json');
+    $templateConfigJson = file_get_contents($node_root.'/templateConfig.json');
+    $queryInfoJson = file_get_contents($node_root.'/queryInfo.json');
+
+    $smarty -> assign('tplData', $tplData);
+    $smarty -> assign('templateConfig', json_decode($templateConfigJson, true));
+    $smarty -> assign('extData', json_decode($extDataJson, true));
+    $smarty -> assign('queryInfo', json_decode($queryInfoJson, true));
     $smarty -> assign('feRoot', '');
 
     $pagePath = $module.'/page.tpl';
     $pageTpl = file_get_contents($pagePath);
-    $pageTplTmp = file_get_contents($pagePath);
-    $pageTplTmp = preg_replace('/\{%extends.*%\}/', '', $pageTplTmp);
-    file_put_contents ($module.'/page.tpl', $pageTplTmp);
-    $smarty -> display($module.'/page.tpl');
-    file_put_contents ($module.'/page.tpl', $pageTpl);
-
+    file_put_contents($node_root.'/page.tpl', $pageTpl);
+    $smarty -> display($node_root.'/page.tpl');
 ?>
