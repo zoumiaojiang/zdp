@@ -4,6 +4,7 @@
     $smarty = new Smarty;
     $module = $argv[1];
     $node_root = $argv[2];
+    $tmp_root = $argv[3];
 
     $data = file_get_contents($module.'/data.json');
     $res = json_decode($data, true);
@@ -28,6 +29,6 @@
 
     $pagePath = $module.'/page.tpl';
     $pageTpl = file_get_contents($pagePath);
-    file_put_contents($node_root.'/page.tpl', $pageTpl);
-    $smarty -> display($node_root.'/page.tpl');
+    file_put_contents($tmp_root.'/page.tpl', $pageTpl);
+    $smarty -> display($tmp_root.'/page.tpl');
 ?>
