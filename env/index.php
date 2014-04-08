@@ -9,7 +9,7 @@
     $data = file_get_contents($module.'/data.json');
     $res = json_decode($data, true);
     $smarty -> template_dir = $node_root.'/templates'; //模板存放目录 
-    $smarty -> compile_dir = $node_root.'/templates_c'; //编译目录 
+    $smarty -> compile_dir = $tmp_root.'/templates_c'; //编译目录 
     $smarty -> caching = false;
     $smarty -> debugging = false;
     $smarty -> left_delimiter = "{%"; //左定界符 
