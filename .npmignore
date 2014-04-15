@@ -1,0 +1,7 @@
+zdp-config.js
+zdp-watch-config.js
+node_modules/
+npm-debug.log
+Thumbs.db
+.DS_Store
+*.swp
