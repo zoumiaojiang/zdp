@@ -35,19 +35,19 @@ zhixin－project/
 3. 我们可以建一个hello world形式的卡片玩一玩，cd到该项目目录下(zhixin-project),执行`zdp init ecl_hello_world --data`, 会发现目录结构变成如下
 ```
  zhixin-project/
-    |-page/
-    |   |-ecl_hello_world/
-    |        |-ajax/
-    |        |-js/
-    |        |-less/
-    |        |-static/
-    |        |-_page.tpl
-    |        |-data.json
-    |        |-page.html
-    |        |-page.less
-    |-static/
-    |-zdp-config.js
-    |-zdp-watch-config.js
+    |- page/
+    |   |- ecl_hello_world/
+    |        |- ajax/
+    |        |- js/
+    |        |- less/
+    |        |- static/
+    |        |- _page.tpl
+    |        |- data.json
+    |        |- page.html
+    |        |- page.less
+    |- static/
+    |- zdp-config.js
+    |- zdp-watch-config.js
 ```
 4. 所有文件在`zdp init`命令中如果加了--data或者-d的话都会注入初始代码
 5. 然后执行`zdp build ecl_hello_world` 或者 `zdp release ecl_hello_world`
