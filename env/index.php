@@ -1,6 +1,26 @@
 <?php
     require('libs/Smarty.class.php');
     ini_set('display_errors' , "off") ;
+
+    /**
+     * merge_array
+     * 
+     * @param  array  $a src_array
+     * @param  array  $b dst_array
+     * @return array    result_array
+     */
+    function merge_array(array $a, array $b)
+    {
+        foreach($b as $key => $val) {
+            if (is_array($val)) {
+                $a[$key] = merge_array(isset($a[$key]) ? $a[$key] : array(), $val);
+            } else {
+                $a[$key] = $val;
+            }
+        }
+        return $a;
+    }
+
     $smarty = new Smarty;
     $module = $argv[1];
     $node_root = $argv[2];
@@ -16,6 +36,7 @@
     $smarty -> right_delimiter = "%}"; //右定界符 
 
     $tplData = $res['item']['display']['tplData'];
+    $extData = $res['item']['display']['extData'];
 
     $extDataJson = file_get_contents($node_root.'/extData.json');
     $templateConfigJson = file_get_contents($node_root.'/templateConfig.json');
@@ -23,7 +44,7 @@
 
     $smarty -> assign('tplData', $tplData);
     $smarty -> assign('templateConfig', json_decode($templateConfigJson, true));
-    $smarty -> assign('extData', json_decode($extDataJson, true));
+    $smarty -> assign('extData', merge_array(json_decode($extDataJson, true), $extData));
     $smarty -> assign('queryInfo', json_decode($queryInfoJson, true));
     $smarty -> assign('feRoot', '');
 
